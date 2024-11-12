@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Yantra</title>
+    <style>
+        /* Center the logo at the top */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 150px; /* Set a maximum width for the logo */
+            max-width: 100%; /* Ensure it scales down for smaller screens */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #000000, #db00b7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 94%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #b300aa;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ab00d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #690061;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .link-container a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+
+        .instruction-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+            overflow: hidden; /* Prevents content overflow */
+        }
+
+        .instruction-box h4 {
+            color: #db00b7;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (username === "" || password === "") {
+                errorMessage.textContent = "Both fields are required.";
+                event.preventDefault();
+            } else {
+                errorMessage.textContent = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Yantra IITM Logo"> <!-- Replace with your logo path -->
+        </div>
+
+        <h2>Login</h2>
+        <form action="acess/login.php" method="POST" onsubmit="validateForm(event)">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div class="error-message" id="error-message"></div>
+        </form>
+
+        <!-- Links for Register and Forgot Password -->
+        <div class="link-container">
+            <a href="register_form.html">Register</a>
+            <a href="mailto:yantraiitm@gmail.com">Forgot Password?</a>
+        </div>
+
+        <!-- Instruction Section -->
+        <div class="instruction-box">
+            <h4>Instructions</h4>
+            <p>1. Use <strong>W A S D</strong> to control your Bot</p>
+            <p>2. Use <strong>1 2 3 4 5</strong> to send preset messages to your opponent</p>
+            <p> 1 = <strong>Hello</strong>, 2 = <strong>Noob</strong>, 3 = <strong>KO</strong>, 4 = <strong>LoL</strong>, 5 = <strong>I am there</strong></p>
+            <p>3. If you do not have an account, please <a href="register_form.html">Register</a> first.</p>
+            <p>4. If you forgot your password, click on the <a href="mailto:yantraiitm@gmail.com">Forgot Password</a> and mail us.</p>
+            <p>5. For any other issues, contact support at <a href="mailto:yantraiitm@gmail.com">yantraiitm@gmail.com</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

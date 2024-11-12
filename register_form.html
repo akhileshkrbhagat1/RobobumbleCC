@@ -1,0 +1,140 @@
+<!-- register.php -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - yantra</title>
+    <style>
+        /* Center the logo at the top */
+        .logo-container {
+            position: fixed; /* Fixes the logo at the top of the page */
+            top: 22%; /* Adjusts the distance from the top */
+            left: 50%; /* Centers the logo horizontally */
+            transform: translateX(-50%); /* Ensures perfect centering */
+            z-index: 99999; /* Ensures it appears above other elements */
+            padding: 10px;
+        }
+
+        .logo-container img {
+            width: 150px; /* Set a maximum width for the logo */
+            max-width: 100%; /* Ensure it scales down for smaller screens */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #000000, #db00b7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            z-index: 1000;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 94%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #b300aa;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ab00d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #690061;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .link-container a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (username === "" || password === "") {
+                errorMessage.textContent = "Both fields are required.";
+                event.preventDefault();
+            } else {
+                errorMessage.textContent = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Yantra IITM Logo"> <!-- Replace with your logo path -->
+    </div>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form action="acess/register.php" method="POST" onsubmit="validateForm(event)">
+            <input type="text" id="username" name="username" placeholder="Username (student email id)" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <div class="error-message" id="error-message"></div>
+        </form>
+
+        <div class="link-container">
+            <a href="login_form.html">Already have an account? Login</a>
+        </div>
+    </div>
+</body>
+
+</html>

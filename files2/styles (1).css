@@ -1,0 +1,396 @@
+/* Global reset and typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #000000, #db00b7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 80vw;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+p {
+    color: #000000;
+}
+
+/* For Flexbox Layout Adjustments */
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.card {
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 35vw;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80vw;
+        margin-bottom: 20px;
+    }
+
+    .right-sidebar {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.card-text {
+    padding: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.iframe-container,
+.card iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.maximize-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #b600ad;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Maximized card style */
+.card.maximized {
+    position: fixed;
+    top: 5%;
+    left: 2%;
+    z-index: 90; /* Keep card below the arrows */
+    transition: all 0.8s ease;
+}
+
+
+/* Right Sidebar */
+.right-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* Fixed Arrow Controls in Sidebar */
+.right-sidebar .arrow-container {
+    position: static;
+    /* Ensures arrows remain inside the sidebar */
+}
+
+.right-sidebar .arrows {
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+    gap: 10px;
+}
+
+/* When card is maximized, keep sidebar and arrows in place */
+.maximized~.right-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+}
+
+/* Arrow Controls */
+/* Ensure the arrow container is always fixed in the viewport */
+/* Ensure the arrow container is fixed in place */
+/* Arrow container should always be in a fixed position */
+.arrow-container {
+    position: fixed;   /* Fixed position in the viewport */
+    top: 10%;           /* Vertical positioning */
+    right: 10%;         /* Horizontal positioning */
+    z-index: 9999;      /* Ensure it's above everything else */
+    display: flex;      /* Flexbox layout for the arrow buttons */
+    justify-content: center; /* Center the arrows */
+    align-items: center;
+    pointer-events: none; /* Prevent interactions with the arrow container */
+}
+.sidebar-text {
+    font-size: 16px;
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+}
+
+
+.arrow-container .arrow {
+    pointer-events: auto;  /* Enable interaction for the individual arrows */
+    cursor: pointer;       /* Indicate that the arrow is clickable */
+}
+
+
+.arrow {
+    font-size: 24px;
+    margin: 5px;
+}
+
+
+
+
+.arrows {
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+    gap: 10px;
+    margin-top: 20px;
+    /* Space between joystick and arrows */
+}
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    color: #b600ad;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+
+}
+
+.arrow.up {
+    grid-area: up;
+}
+
+.arrow.left {
+    grid-area: left;
+}
+
+.arrow.right {
+    grid-area: right;
+}
+
+.arrow.down {
+    grid-area: down;
+}
+
+.arrow.glow {
+    background-color: #b700ff;
+    color: #2e112c;
+}
+
+
+
+/* Center-right Text */
+.center-right-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Chat Box */
+/* Chat Box Container at Bottom */
+.chat-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    max-height: 27vh;
+    background-color: #222;
+    border-top: 2px solid #8d027a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #111;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.chat-box p {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chat-box .received {
+    background-color: #8d027a;
+    align-self: flex-start;
+    color: #ffffff;
+}
+
+.chat-box .sent {
+    background-color: #333;
+    align-self: flex-end;
+    color: #ffffff;
+}
+
+/* Input Box Styling */
+.input-box {
+    display: flex;
+    padding: 10px;
+    background-color: #222;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+}
+
+.input-box button {
+    
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    background-color: #8d027a;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Styling for the new sidebar-text for instructions */
+.sidebar-text {
+    font-size: 16px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+/* Styling for the Preset Messages section */
+.preset-messages {
+    background-color: #333;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.preset-messages p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.preset-messages ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.preset-messages li {
+    color: #ddd;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.preset-messages li strong {
+    color: #e000c2; /* Highlight the key number */
+}
+/* Styling for general sidebar text */
+.sidebar-text {
+    font-size: 16px;
+    color: #fff;  /* White text color */
+    margin: 10px 0;
+    padding: 5px;
+}
+
+/* Styling for specific sidebar text with additional style */
+.sidebar-text1 {
+    font-size: 18px;
+    color: #f0f0f0;  /* Lighter color for emphasis */
+    margin: 15px 0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Styling for the Yantra IITM BS Robo Club heading */
+.sidebar-text h1 {
+    font-size: 22px;
+    color: #e000c2;  /* Tomato color for emphasis */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Adding some specific styles for the instructions text */
+.sidebar-text p {
+    font-size: 16px;
+    color: #ddd;  /* Slightly lighter color for better readability */
+    margin: 5px 0;
+}
+
+/* Special box for the repeated instruction message */
+.sidebar-text p strong {
+    color: #d400b8;  /* Highlight the action with Tomato color */
+}
+.logo-container{
+    height: 150px;
+}
